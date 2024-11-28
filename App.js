@@ -6,10 +6,10 @@ import Header from './components/Header';
 export default function App() {
   // Lista para armazenar os desejos
   const [desejos, setDesejos] = useState([]);
-  const [modalVisible, setModalVisible] = useState(false);  // Controla a visibilidade do modal
+  const [modalVisible, setModalVisible] = useState(false); 
 
   // Animação de slide para o modal
-  const modalY = useState(new Animated.Value(300))[0]; // Valor inicial fora da tela
+  const modalY = useState(new Animated.Value(300))[0]; 
 
   // Função que recebe os dados do Form e adiciona à lista de desejos
   const handleSaveDesejo = (novoDesejo) => {
@@ -20,8 +20,8 @@ export default function App() {
   const openModal = () => {
     setModalVisible(true);
     Animated.timing(modalY, {
-      toValue: 0,  // Posiciona o modal na tela
-      duration: 500, // Duração da animação
+      toValue: 0,  
+      duration: 500,
       useNativeDriver: true,
     }).start();
   };
@@ -31,7 +31,7 @@ export default function App() {
     Animated.timing(modalY, {
       useNativeDriver: true,
     }).start(() => {
-      setModalVisible(false); // Após a animação, esconde o modal
+      setModalVisible(false); 
     });
   };
 
@@ -52,10 +52,10 @@ export default function App() {
 
       {/* Modal para visualizar os desejos salvos */}
       <Modal
-        transparent={true} // Fundo semi-transparente
+        transparent={true} 
         visible={modalVisible}
-        animationType="none"  // Desabilita animação automática do Modal
-        onRequestClose={closeModal} // Fecha o modal ao pressionar o botão "Voltar"
+        animationType="none"  
+        onRequestClose={closeModal} 
       >
         {/* View do Modal com animação */}
         <Animated.View style={[styles.modalContainer, { transform: [{ translateY: modalY }] }]}>
@@ -99,31 +99,30 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
-    // cinza claro
     backgroundColor: '#f5f5f5',
   },
   imageButton: {
-    marginTop: 20,  // Espaçamento entre o Form e a imagem de botão
-    alignItems: 'center',  // Centraliza a imagem no container
+    marginTop: 20, 
+    alignItems: 'center',  
   },
   image: {
-    width: 100,  // Ajuste o tamanho da imagem conforme necessário
+    width: 100,  
     height: 100,
   },
   modalContainer: {
     flex: 1,
-    justifyContent: 'flex-end',  // Posiciona o modal no fim da tela
+    justifyContent: 'flex-end',  
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fundo semi-transparente
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', 
   },
   modalContent: {
     backgroundColor: 'white',
     padding: 20,
     borderRadius: 10,
     width: '100%',
-    height: '80%',  // Ajuste para garantir que o modal ocupe 80% da altura da tela
+    height: '80%',  
     alignItems: 'center',
-    overflow: 'hidden',  // Impede que a lista ultrapasse o limite do modal
+    overflow: 'hidden', 
   },
   modalTitle: {
     fontSize: 18,
@@ -153,7 +152,7 @@ const styles = StyleSheet.create({
   },
   desejosList: {
     width: '100%',
-    flex: 1,  // Ocupa 100% do espaço disponível dentro do modal
-    paddingBottom: 20,  // Adiciona um pequeno espaço no final
+    flex: 1,  
+    paddingBottom: 20,  
   },
 });
